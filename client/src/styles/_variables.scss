@@ -1,8 +1,12 @@
 // Colors
-$background-main: #F4F4F4;
+$background-main: #FFFFF1;
 
-$color-blue-main: #A1B6FF;
+$color-orange-main: #FFD4A1;
 $color-red-main: #FFA1A1;
+$color-grey-main: #727272;
+$color-black-main: rgb(21, 21, 21);
+
+$color-grey-light: #C6C6C6;
 
 // Screen
 $screen-width-xl: 1280px;
@@ -11,10 +15,31 @@ $screen-width-md: 768px;
 $screen-width-sm: 425px;
 $screen-width-xs: 375px;
 
-// Margin/Padding
-$padding-screen-xl: 25px;
+// Padding
+$padding-xl: 75px;
+$padding-lg: 50px;
+$padding-md: 25px;
+$padding-sm: 15px;
+$padding-xs: 10px;
+
+// Margin
+$margin-xl: 75px;
+$margin-lg: 50px;
+$margin-md: 25px;
+$margin-sm: 15px;
+$margin-xs: 10px;
+
+// Border
+$border-rectangle: 5px;
 
 // Text
-$font-family-roboto: 'Roboto', sans-serif;
-$font-size-title: 2.4rem;
-$font-size-text: 1.6rem
+$font-family-title: 'Lato', sans-serif;
+$font-family-text: 'Roboto', sans-serif;
+
+$font-size-title-xl: 5rem;
+$font-size-title-lg: 3rem;
+$font-size-title-md: 2.4rem;
+$font-size-text: 1.6rem;
+
+// Transition
+$transition-basic: 0.2s ease-in;

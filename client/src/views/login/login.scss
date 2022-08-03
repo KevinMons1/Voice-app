@@ -1,0 +1,87 @@
+.connexion-body {
+    .image {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+    }
+
+    .content {
+        @include _absolute-center();
+        @include _flexbox();
+    
+        padding: $padding-xl $padding-lg;
+    
+        text-align: center;
+        flex-direction: column;
+    
+        background-color: #fff;
+        border-radius: 25px;
+    
+        -webkit-box-shadow: 0px 0px 50px -11px rgba(0,0,0,0.25);
+        -moz-box-shadow: 0px 0px 50px -11px rgba(0,0,0,0.25);
+        box-shadow: 0px 0px 50px -11px rgba(0,0,0,0.25);
+        
+        main {
+            position: relative;
+            margin-bottom: $margin-md;
+            width: 100%;
+    
+            h1 {
+                font-size: $font-size-title-lg;
+                margin-bottom: $margin-md;
+                font-weight: bold;
+            }
+    
+            form {
+                width: 100%;
+    
+                input {
+                    @include _input-connexion();
+                    width: 400px;
+                }
+    
+                .input-icon-box {
+                    position: relative;
+
+                    input {
+                        padding-right: $padding-lg;
+                    }
+    
+                    .password-icon {
+                        position: absolute;
+                        top: 50%;
+                        left: 100%;
+        
+                        height: 24px;
+                        
+                        transform: translate(calc(-50% - $padding-md), -50%);
+                        transition: $transition-basic;
+                        opacity: 0.5;
+                        cursor: pointer;
+    
+                        &:hover {
+                            opacity: 1;
+                        }
+    
+                        &.hide {
+                            display: none;
+                        }
+                    }
+                }
+    
+                .btn-login {
+                    @include _button(1);
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

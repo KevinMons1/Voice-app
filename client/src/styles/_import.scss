@@ -1,5 +1,7 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap');
 
-@import "./_variables";
-@import "./_mixins";
+// Styles
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixins.scss";
+@import "@/styles/_main.scss";

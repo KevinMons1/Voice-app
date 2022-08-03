@@ -12,6 +12,44 @@
     transform: translate(-50%, -50%);
 }
 
-@mixin _button() {
+@mixin _button($type) {
+    padding: $padding-xs;
+
+    text-align: center;
+
+    border-radius: $border-rectangle;
+    font-size: $font-size-text;
+    text-decoration: none;
     
+    transition: $transition-basic;
+    cursor: pointer;
+
+    @if $type == 1 {
+
+        background-color: $color-orange-main;
+        border: 1px solid $color-orange-main;
+        color: #000;
+
+    } @else if $type == 2 {
+
+        background: $color-black-main;
+        border: 1px solid $color-black-main;
+        color: #fff;
+    }
+
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+@mixin _input-connexion() {
+    width: 100%;
+
+    padding: $padding-sm;
+    margin: $margin-sm 0;
+
+    border-radius: $border-rectangle;
+    border: 1px solid $color-grey-light;
+
+    outline: none;
 }
