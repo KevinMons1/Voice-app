@@ -20,6 +20,8 @@
     border-radius: $border-rectangle;
     font-size: $font-size-text;
     text-decoration: none;
+    font-weight: bold;
+
     
     transition: $transition-basic;
     cursor: pointer;
@@ -28,28 +30,32 @@
 
         background-color: $color-orange-main;
         border: 1px solid $color-orange-main;
-        color: #000;
+        color: $color-black-main;
 
     } @else if $type == 2 {
 
-        background: $color-black-main;
+        background: none;
         border: 1px solid $color-black-main;
-        color: #fff;
+        color: $color-black-main;
     }
 
     &:hover {
-        opacity: 0.5;
+        opacity: 0.75;
     }
 }
 
 @mixin _input-connexion() {
     width: 100%;
 
-    padding: $padding-sm;
+    padding: $padding-xs;
     margin: $margin-sm 0;
 
     border-radius: $border-rectangle;
     border: 1px solid $color-grey-light;
 
     outline: none;
+
+    &.warning {
+        border: 1px solid $color-red-main;
+    }
 }

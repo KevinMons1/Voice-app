@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import HeaderTitle from "@/components/headerTitle/HeaderTitle.vue"
+import HeaderTitle from "@/components/header/HeaderTitle.vue"
 
 export default {
     setup () {
@@ -69,11 +69,11 @@ export default {
                     }
 
                     a:nth-child(1) {
-                        @include _button("1");
+                        @include _button(1);
                     }
 
                     a:nth-child(2) {
-                        @include _button("2");
+                        @include _button(2);
                     }
                 }
             }

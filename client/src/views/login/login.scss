@@ -1,10 +1,17 @@
 .connexion-body {
+    position: relative;
+    min-height: 100vh;
+    height: 100vh;
+    padding: $padding-md;
+
     .image {
         position: absolute;
-        top: 25%;
+        top: 20%;
         left: 50%;
 
         transform: translate(-50%, -50%);
+
+        z-index: 0;
 
         img {
             width: 100%;
@@ -13,14 +20,15 @@
         }
     }
 
-    .content {
-        @include _absolute-center();
+    .wrapper {
         @include _flexbox();
-    
+        width: 100%;
+        min-height: calc(100% - $padding-md);
+        z-index: -1;
+    }
+
+    .content {
         padding: $padding-xl $padding-lg;
-    
-        text-align: center;
-        flex-direction: column;
     
         background-color: #fff;
         border-radius: 25px;
@@ -28,24 +36,25 @@
         -webkit-box-shadow: 0px 0px 50px -11px rgba(0,0,0,0.25);
         -moz-box-shadow: 0px 0px 50px -11px rgba(0,0,0,0.25);
         box-shadow: 0px 0px 50px -11px rgba(0,0,0,0.25);
+
+        z-index: 1;
         
         main {
             position: relative;
-            margin-bottom: $margin-md;
-            width: 100%;
     
             h1 {
-                font-size: $font-size-title-lg;
                 margin-bottom: $margin-md;
+                text-align: center;
+                font-size: $font-size-title-lg;
                 font-weight: bold;
             }
     
             form {
-                width: 100%;
+                width: 400px;
     
-                input {
+                input, select {
                     @include _input-connexion();
-                    width: 400px;
+                    width: 100%;
                 }
     
                 .input-icon-box {
@@ -77,11 +86,37 @@
                     }
                 }
     
-                .btn-login {
+                .btn-accept {
                     @include _button(1);
+                    margin: $margin-sm 0;
                     width: 100%;
                 }
             }
+        }
+
+        footer {
+            @include _flexbox();
+            flex-direction: column;
+            width: 100%;
+
+            a.password-forget {
+
+                color: $color-grey-main;
+                text-decoration: none;
+
+                transition: $transition-basic;
+
+                &:hover {
+                    color: $color-black-main;
+                }
+            }
+
+            a.other-choice {
+                @include _button(2);
+                margin: $margin-sm 0;
+                width: 100%;
+            }
+            
         }
     }
 }

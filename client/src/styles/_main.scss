@@ -12,7 +12,7 @@ h1, h2, h3, h4 {
     color: $color-black-main;
 }
 
-p, small, input, label, textarea, span, button, a {
+p, small, input, label, select, option, textarea, span, button, a, div {
     font-size: $font-size-text;
     font-family: $font-family-text;
     color: $color-black-main;
