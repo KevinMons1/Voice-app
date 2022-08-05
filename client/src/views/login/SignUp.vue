@@ -10,7 +10,7 @@
                 :dataForm="dataForm" 
                 v-model:firstName="dataForm.firstName"
                 v-model:lastName="dataForm.lastName"
-                v-model:mailAdress="dataForm.mailAdress"
+                v-model:email="dataForm.email"
                 v-model:password="dataForm.password"
                 @handleNext="handleNext" 
             />
@@ -29,27 +29,30 @@
 <script>
 import { ref, reactive } from "vue"
 
+import { useValidatorsStep1 } from "../../mixins/form/validators"
+
 import HeaderTitle from "@/components/header/HeaderTitle.vue"
 import SignUpStep1 from "./SignUpStep1.vue"
 import SignUpStep2 from "./SignUpStep2.vue"
 
 export default {
     setup () {
-        let step = ref(2)
+        let step = ref(1)
 
         const dataForm = reactive({
             firstName: "",
             lastName: "",
-            mailAdress: "",
+            email: "",
             password: "",
+            confirmPassword: "",
             country: "",
             languagesSpeak: [],
             languagesLearn: []
         })
 
         const handleNext = (value) => {
-            console.log(value);
             if (step.value === 1) {
+                useValidatorsStep1(dataForm)
                 step.value++
             }
             else if (step.value === 2) {

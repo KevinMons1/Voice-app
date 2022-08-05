@@ -45,11 +45,11 @@ import HeaderTitle from "@/components/header/HeaderTitle.vue"
 
 export default {
     setup () {
-        const mailAdress = ref(false)
+        const email = ref(false)
         const password = ref(false)
 
         return {
-            mailAdress,
+            email,
             password
         }
     },

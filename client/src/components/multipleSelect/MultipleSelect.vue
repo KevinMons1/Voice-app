@@ -2,7 +2,7 @@
     <Multiselect 
         v-model="value"
         :options="options" 
-        mode="tags" 
+        :mode="type === 0 ? 'single' : 'tags'" 
         :close-on-select="false"
         :placeholder="title"
     />
@@ -28,7 +28,7 @@ export default {
     components: {
         Multiselect
     },
-    props: ['title', 'options']
+    props: ['title', 'options', 'type']
 }
 </script>
 
@@ -36,6 +36,7 @@ export default {
     .multiselect {
         @include _input-connexion();
         position: relative;
+        min-height: 41px;
 
         cursor: pointer;
 
@@ -60,6 +61,19 @@ export default {
             }
         }
 
+        .multiselect-tags {
+            margin: 0 5px;
+            padding: 0;
+
+            .multiselect-tag:nth-child(1) {
+                margin: 0 5px 0 0;
+            }
+
+            .multiselect-tags-search-wrapper {
+                margin: 0 5px;
+            }
+        }
+
         .multiselect-tag {
             padding: $padding-xxs;
 
@@ -67,7 +81,11 @@ export default {
             color: $color-black-main;
 
             font-size: $font-size-text;
-            font-weight: normal;
+            font-weight: normal; 
+        }
+
+        .multiselect-option.is-selected {
+            background-color: $color-orange-main;
         }
 
         .multiselect-dropdown {

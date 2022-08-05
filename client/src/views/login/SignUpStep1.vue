@@ -2,23 +2,23 @@
     <div class="content">
         <main>
             <h1>Sign Up</h1>
-            <form @submit.prevent="null">
+            <form @submit.prevent="handleNext">
                 <div class="input-box">
                     <ErrorMessageForm v-if="false" message="" type="warning" />
-                    <input v-model="firstName" type="text" placeholder="FirstName" v-bind:class="{'warning': false}" required>
+                    <input v-model="firstName" name="fistName" autocomplete="true" type="text" placeholder="FirstName" v-bind:class="{'warning': false}" required>
                 </div>
                 <div class="input-box">
                     <ErrorMessageForm v-if="false" message="" type="warning" />
-                    <input v-model="lastName" type="text" placeholder="LastName" v-bind:class="{'warning': false}" required>
+                    <input v-model="lastName" name="lastName" autocomplete="true" type="text" placeholder="LastName" v-bind:class="{'warning': false}" required>
                 </div>
                   <div class="input-box">
                     <ErrorMessageForm v-if="false" message="" type="warning" />
-                    <input v-model="mailAdress" type="email" placeholder="Mail adress" v-bind:class="{'warning': false}" required>
+                    <input v-model="email" name="email" autocomplete="true" type="email" placeholder="Mail adress" v-bind:class="{'warning': false}" required>
                 </div>
                 <div class="input-box">
                     <ErrorMessageForm v-if="false" message="" type="warning" />
                     <div class="input-icon-box">
-                        <input v-model="password" type="password" placeholder="Password" v-bind:class="{'warning': false}" required>
+                        <input v-model="password" name="password" autocomplete="true" type="password" placeholder="Password" v-bind:class="{'warning': false}" required>
                         <VisibilityOnIcon class="password-icon" />
                         <VisibilityOffIcon class="password-icon hide" /> 
                     </div>
@@ -26,12 +26,12 @@
                 <div class="input-box">
                     <ErrorMessageForm v-if="false" message="" type="warning" />
                     <div class="input-icon-box">
-                        <input type="password" placeholder="Confirm password" v-bind:class="{'warning': false}" required>
+                        <input v-model="confirmPassword" type="password" placeholder="Confirm password" v-bind:class="{'warning': false}" required>
                         <VisibilityOnIcon class="password-icon" />
                         <VisibilityOffIcon class="password-icon hide" /> 
                     </div>
                 </div>
-                <button @click="handleNext" class="btn-accept">Next</button>
+                <button type="submit" class="btn-accept">Next</button>
             </form>
         </main>
         <footer>

@@ -2,7 +2,7 @@
     <div class="content">
         <main>
             <h1>Sign Up</h1>
-            <form @submit.prevent="null">
+            <form @submit.prevent="handleNext">
                 <div class="input-box">
                     <ErrorMessageForm v-if="false" message="" type="warning" />
                     <MultipleSelect 
@@ -36,7 +36,7 @@
                         v-bind:class="{'warning': false}" 
                     />
                 </div>
-                <button @click="handleNext" class="btn-accept">Next</button>
+                <button type="submit" class="btn-accept">Next</button>
             </form>
         </main>
         <footer>
@@ -64,13 +64,11 @@ export default {
         }
 
         const handleChange = (e) => {
-            console.log(e.value);
-            console.log(dataValue.country);
-            if (e.value === 0) {
+            if (e.type === 0) {
                 dataValue.country = e.value
-            } else if (e.value === 1) {
+            } else if (e.type === 1) {
                 dataValue.languagesSpeak = e.value
-            } else if (e.value === 2) {
+            } else if (e.type === 2) {
                 dataValue.languagesLearn = e.value
             }
         }
