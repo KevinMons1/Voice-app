@@ -1,43 +1,78 @@
-import { isEmpty } from "./validators"
+import { useValidatorsStep1, isEmpty, isValidName } from "./validators"
 
 /*global describe, it, expect*/
 
+const dataFormStep1 = {
+    firstName: "John",
+    lastName: "Doe",
+    email: "test@gmail.com",
+    password: "123456",
+    confirmPassword: "123456",
+}
+
 describe('useValidatorsStep1()', () => {
-    describe('isEmpty()', () => {
-        it('Should not throw a error if I give a number or an array', () => {
-            const inputString = 'hello world'
-            const inputArray = [1, 2, 3]
-    
-            const isEmptyFuncString = () => isEmpty(inputString)
-            const isEmptyFuncArray = () => isEmpty(inputArray)
-    
-            expect(isEmptyFuncString).not.toThrow()
-            expect(isEmptyFuncArray).not.toThrow()
-        })
+    it('Should return status false if I give invalid data', () => {
+        const _dataFormStep1InvalidType = {
+            ...dataFormStep1,
+            firstName: true
+        }
 
-        it('Should throw a error if I give a empty string ou array', () => {
-            const inputString = ''
-            const inputArray = []
-    
-            const isEmptyFuncString = () => isEmpty(inputString)
-            const isEmptyFuncArray = () => isEmpty(inputArray)
-    
-            expect(isEmptyFuncString).toThrow()
-            expect(isEmptyFuncArray).toThrow()
-        })
+        const _dataFormStep1EmptyData = {
+            ...dataFormStep1,
+            firstName: ""
+        }
 
-        it('Should throw a error if I not give a string or an array type', () => {
-            const inputNumber = 1
-            const inputObject = {}
-            const inputBoolean = true
+        const _dataFormStep1InvalidData = {
+            ...dataFormStep1,
+            firstName: "John&"
+        }
 
-            const isEmptyFuncNumber = () => isEmpty(inputNumber)
-            const isEmptyFuncObject = () => isEmpty(inputObject)
-            const isEmptyFuncBoolean = () => isEmpty(inputBoolean)
+        const resultInvalidType = useValidatorsStep1(_dataFormStep1InvalidType)
+        const resultEmptyData = useValidatorsStep1(_dataFormStep1EmptyData)
+        const resultInvalidData = useValidatorsStep1(_dataFormStep1InvalidData)
+        
+        expect(resultInvalidType).toMatchObject({ status: false })
+        expect(resultEmptyData).toMatchObject({ status: false })
+        expect(resultInvalidData).toMatchObject({ status: false })
+    })
 
-            expect(isEmptyFuncNumber).toThrow()
-            expect(isEmptyFuncObject).toThrow()
-            expect(isEmptyFuncBoolean).toThrow()
-        })
+    it('Should return status true if I give valid data', () => {
+        const result = useValidatorsStep1(dataFormStep1)
+        
+        expect(result).toMatchObject({ status: true })
+    })
+})
+
+describe('isEmpty()', () => {
+    it('Should not throw a error if I give not empty data', () => {
+        const inputString = 'hello world'
+        const inputArray = [1, 2, 3]
+
+        const isEmptyFuncString = () => isEmpty(inputString)
+        const isEmptyFuncArray = () => isEmpty(inputArray)
+
+        expect(isEmptyFuncString).not.toThrow()
+        expect(isEmptyFuncArray).not.toThrow()
+    })
+
+    it('Should throw a error if I give empty data', () => {
+        const inputString = ''
+        const inputArray = []
+
+        const isEmptyFuncString = () => isEmpty(inputString)
+        const isEmptyFuncArray = () => isEmpty(inputArray)
+
+        expect(isEmptyFuncString).toThrow()
+        expect(isEmptyFuncArray).toThrow()
+    })
+})
+
+describe('isValidName()', () => {
+    it('Should throw a error if I give invalid data', () => {
+        const inputString = "John&"
+
+        const isValidNameFunc = () => isValidName(inputString)
+
+        expect(isValidNameFunc).toThrow()
     })
 })
