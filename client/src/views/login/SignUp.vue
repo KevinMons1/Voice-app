@@ -8,6 +8,7 @@
             <SignUpStep1 
                 v-if="step === 1" 
                 :dataForm="dataForm" 
+                :error="error"
                 v-model:firstName="dataForm.firstName"
                 v-model:lastName="dataForm.lastName"
                 v-model:email="dataForm.email"
@@ -37,7 +38,7 @@ import SignUpStep2 from "./SignUpStep2.vue"
 
 export default {
     setup () {
-        let step = ref(1)
+        const step = ref(1)
 
         const dataForm = reactive({
             firstName: "",
@@ -50,10 +51,26 @@ export default {
             languagesLearn: []
         })
 
-        const handleNext = (value) => {
+        const error = reactive({
+            status: true,
+            message: "",
+            cause: ""
+        })
+
+        const handleNext = async (value) => {
             if (step.value === 1) {
-                useValidatorsStep1(dataForm)
-                step.value++
+                const result = await useValidatorsStep1(dataForm)
+
+                if (result.status === true) {
+                    error.status = true
+
+                    step.value++
+                } else if (result.status === false) {
+                    error.status = result.status
+                    error.message = result.message
+                    error.cause = result.cause
+                }
+
             }
             else if (step.value === 2) {
                 console.log(value);
@@ -63,6 +80,7 @@ export default {
         return {
             dataForm,
             step,
+            error,
             handleNext
         }
     },

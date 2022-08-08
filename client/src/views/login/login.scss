@@ -56,6 +56,14 @@
                     @include _input-connexion();
                     width: 100%;
                 }
+
+                .input-box {
+                    &.input-error {
+                        input {
+                            border: 1px solid $color-red-main;
+                        }
+                    }
+                }
     
                 .input-icon-box {
                     position: relative;
@@ -78,10 +86,6 @@
     
                         &:hover {
                             opacity: 1;
-                        }
-    
-                        &.hide {
-                            display: none;
                         }
                     }
                 }
